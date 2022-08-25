@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './assets/styles';
+import './style/style.less';
 
-import { App } from './views/app';
+import { App } from './container/app';
 
 const rootElement = document.querySelector('#root');
 ReactDOM.render(<App />, rootElement);

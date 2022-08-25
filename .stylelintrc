@@ -1,4 +1,5 @@
 {
+    "customSyntax": "postcss-less",
     "extends": [
         "stylelint-config-standard",
         "stylelint-config-prettier"
@@ -11,7 +12,8 @@
         "prettier/prettier": true,
         "declaration-empty-line-before": null,
         "no-empty-source": true,
-        "custom-property-pattern": null,
+        "custom-property-pattern": "^(?:[A-Z]+(?:_[A-Z]+)*|[a-z]+(?:[A-Z][a-z]*)*)$",
+        "keyframes-name-pattern": "^[A-Z]+(?:_[A-Z]+)*$",
         "order/order": [
             "custom-properties",
             "dollar-variables",

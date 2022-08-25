@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
@@ -15,7 +18,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'React Boilerplate',
             template: path.resolve(__dirname, 'src', 'index.html')
-        })
+        }),
+        ...(isProduction ? [new MiniCssExtractPlugin()] : [])
     ],
     devtool: 'inline-source-map',
     mode: 'development',
@@ -33,8 +37,12 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
+                test: /\.less$/,
+                use: [
+                    isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
