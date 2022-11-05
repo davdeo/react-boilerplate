@@ -1,12 +1,8 @@
 import React, { FunctionComponent } from 'react';
-
-import { NFTCard } from '../../components/nft-card';
+import { Outlet } from 'react-router';
 
 export const App: FunctionComponent = () => (
     <div className={'app'}>
-        <div>{'Hello World!'}</div>
-        <div>
-            <NFTCard />
-        </div>
+        <Outlet />
     </div>
 );

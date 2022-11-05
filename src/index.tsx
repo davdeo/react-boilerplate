@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Client from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
 
-import { App } from './container/app';
+import { router } from './router';
 
 import './style/style.less';
 
-const rootElement = document.querySelector('#root');
-ReactDOM.render(<App />, rootElement);
+// @ts-ignore
+const reactRoot = Client.createRoot(document.getElementById('root'));
+
+reactRoot.render(<RouterProvider router={router} />);
