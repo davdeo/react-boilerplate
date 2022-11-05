@@ -57,6 +57,15 @@
                 "caseSensitive": false
             }
         ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsForRegex": [
+                    "state"
+                ]
+            }
+        ],
         "simple-import-sort/imports": [
             "error",
             {
