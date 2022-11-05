@@ -1,9 +1,9 @@
 import React from 'react';
 
-export class NFTCard extends React.PureComponent {
+export class BlueBox extends React.PureComponent {
     render(): React.ReactNode {
         return (
-            <div className={'nft-card'}>
+            <div className={'blue-box'}>
                 <div className={'nested'} />
             </div>
         );

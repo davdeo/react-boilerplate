@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { NFTCard } from '../../components/nft-card';
+import { BlueBox } from '../../components';
 
 export interface HelloWorldStateProps {
     counter: number;
@@ -32,8 +32,6 @@ export const HelloWorldComponent: FunctionComponent<HelloWorldProps> = ({
         <button onClick={() => logCounterAsync({ delay: 2000 })} type={'button'}>
             {'log async'}
         </button>
-        <div>
-            <NFTCard />
-        </div>
+        <BlueBox />
     </div>
 );
