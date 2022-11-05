@@ -8,13 +8,16 @@
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:prettier/recommended"
     ],
-    "plugins": [],
+    "plugins": [
+        "sort-destructure-keys",
+        "simple-import-sort"
+    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersi#on": 2021,
+        "ecmaVersion": 2021,
         "sourceType": "module",
         "project": ["./tsconfig.json"]
     },
@@ -38,6 +41,103 @@
                 "allowExpressions": true
             }
         ],
-        "jsx-a11y/anchor-is-valid": "warn"
+        "jsx-a11y/anchor-is-valid": "warn",
+
+        "curly": [
+            "error",
+            "all"
+        ],
+        "react/jsx-curly-brace-presence": [
+            "error",
+            "always"
+        ],
+        "sort-destructure-keys/sort-destructure-keys": [
+            "error",
+            {
+                "caseSensitive": false
+            }
+        ],
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    // Node.js builtins. You could also generate this regex if you use a `.js` config.
+                    // For example: `^(${require("module").builtinModules.join("|")})(/|$)`
+                    [
+                        "^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)"
+                    ],
+                    // Packages. `react` related packages come first.
+                    [
+                        "^react",
+                        "^@?\\w"
+                    ],
+                    // Internal packages.
+                    [
+                        "^(@|@company|@ui|components|utils|config|vendored-lib|@src)(/.*|$)"
+                    ],
+                    // Side effect imports.
+                    [
+                        "^\\u0000"
+                    ],
+                    // Parent imports. Put `..` last.
+                    [
+                        "^\\.\\.(?!/?$)",
+                        "^\\.\\./?$"
+                    ],
+                    // Other relative imports. Put same-folder imports and `.` last.
+                    [
+                        "^\\./(?=.*/)(?!/?$)",
+                        "^\\.(?!/?$)",
+                        "^\\./?$"
+                    ],
+                    // Style imports.
+                    [
+                        "^.+\\.less$"
+                    ]
+                ]
+            }
+        ],
+        "react/sort-comp": [
+            "error",
+            {
+                "order": [
+                    "static-variables",
+                    "instance-variables",
+                    "static-methods",
+                    "lifecycle",
+                    "everything-else",
+                    "render"
+                ],
+                "groups": {
+                    "lifecycle": [
+                        "displayName",
+                        "propTypes",
+                        "contextTypes",
+                        "childContextTypes",
+                        "mixins",
+                        "statics",
+                        "defaultProps",
+                        "constructor",
+                        "getDefaultProps",
+                        "state",
+                        "getInitialState",
+                        "getChildContext",
+                        "getDerivedStateFromProps",
+                        "componentWillMount",
+                        "UNSAFE_componentWillMount",
+                        "componentDidMount",
+                        "componentWillReceiveProps",
+                        "UNSAFE_componentWillReceiveProps",
+                        "shouldComponentUpdate",
+                        "componentWillUpdate",
+                        "UNSAFE_componentWillUpdate",
+                        "getSnapshotBeforeUpdate",
+                        "componentDidUpdate",
+                        "componentDidCatch",
+                        "componentWillUnmount"
+                    ]
+                }
+            }
+        ]
     }
 }
