@@ -12,6 +12,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
         clean: true
     },
     plugins: [
@@ -24,7 +25,8 @@ module.exports = {
     devtool: 'inline-source-map',
     mode: 'development',
     devServer: {
-        static: './dist'
+        static: './dist',
+        historyApiFallback: true
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
